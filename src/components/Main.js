@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
-
+import fire from './fire'
 class Main extends Component {
 
-  
   render() {
     return (
         <div id="content">
+
               <h1>Add Report Values</h1>
         <form onSubmit={(event) => {
           event.preventDefault()
@@ -16,6 +15,7 @@ class Main extends Component {
           const drugName = this.antiDopingDrugName.value
           const quantity = window.web3.utils.toWei(this.antiDopingQuantity.value.toString(), 'Ether')
           this.props.createReport(playerName, playerAge, bloodGroup, drugName, quantity)
+         
         }}>
           <div className="form-group mr-sm-2">
             <input
@@ -62,40 +62,13 @@ class Main extends Component {
               placeholder="Drug quantity"
               required />
           </div>
-          <button type="submit" className="btn btn-primary">Add Report</button>
-        </form>
-        <p>&nbsp;</p>
-        <h2>Add drug report</h2>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Player Name</th>
-              <th scope="col">Player Age</th>
-              <th scope="col">Blood Group</th>
-              <th scope="col">Drug Name</th>
-              <th scope="col">Quatity_ng/ml</th>
-              <th scope="col">WADA</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody id="antiDopingList">
-            {this.props.reports.map((report, key)=>{
-              return (
-                <tr key={key}>
-                <th scope="row">{report.id.toString()}</th>
-                <td>{report.playerName}</td>
-                <td>{report.playerAge}</td>
-                <td>{report.bloodGroup}</td>
-                <td>{report.drugName}</td>
-                <td>{window.web3.utils.fromWei(report.quantity.toString(),'Ether')}</td>
-                </tr>
 
-                )
-            })} 
-          </tbody>
-        </table>
+          <button type="submit" className="btn btn-primary" >Add Report</button>
+               
+ </form>
+
         </div>
+
     );
   }
 }
