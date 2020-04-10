@@ -14,6 +14,7 @@ import {BrowserRouter, Route,Switch} from 'react-router-dom'
 import WADA from './WADA'
 import Login from './Login'
 import Address from './Address'
+import Address2 from './Address2'
 import Auth from './Auth'
 import Log from './Log'
 import PLAYER from './PLAYER'
@@ -234,6 +235,13 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
            <Route exact={true} path='/' render={() => (
             <div className="App">
               <Log reports = {this.state.reports}
+                 createReport={this.createReport}
+                 />
+            </div>
+         )}/>
+          <Route exact={true} path='/Address2' render={() => (
+            <div className="App">
+              <Address2 reports = {this.state.reports}
                  createReport={this.createReport}
                  />
             </div>
