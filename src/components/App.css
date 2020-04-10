@@ -1,0 +1,9 @@
+body {
+  background-color: dodgerblue;
+  background-image: url(olympic.jpg);
+  background-size: cover;  
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
