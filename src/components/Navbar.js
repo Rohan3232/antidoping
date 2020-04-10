@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import fire from './fire'
 
 class Navbar extends Component {
  constructor(props) {

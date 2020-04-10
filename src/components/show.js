@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
 
-import AntiDoping from '../abis/AntiDoping.json' 
-import {App} from './App'
 
 var x;
 export class Show extends Component {
   getValue()
   { 
 
-    if(x=='valid')
+    if(x==='valid')
      { alert("data is valid")
-        const y='valid'
     }else
         {alert("data is invalid")
-      const y='Invalid'
-       console.log({y})
           
     }
   }

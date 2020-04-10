@@ -2,39 +2,26 @@ import React, { Component } from 'react';
 import Web3 from 'web3'
 import './App.css';
 import AntiDoping from '../abis/AntiDoping.json' 
+import data from './data.json'
 import Navbar from './Navbar'
 import Main from './Main'
 import Show from './show'
 import {BrowserRouter, Route,Switch} from 'react-router-dom'
 import WADA from './WADA'
 import Login from './Login'
-import fire from './fire'
 import Address from './Address'
 import Auth from './Auth'
 import Log from './Log'
 import PLAYER from './PLAYER'
 export class App extends Component {
 
-   authListener() {
-    fire.auth().onAuthStateChanged((user) => {
-     // console.log(user);
-      if (user) {
-        this.setState({ user });
-       // localStorage.setItem('user', user.uid);
-      } else {
-        this.setState({ user: null });
-        //localStorage.removeItem('user');
-      }
-    });
-  }
-  async componentWillMount(){
+     async componentWillMount(){
     await this.loadWeb3()
     await this.loadBlockchainData()
 
     await this.loadBlockchainData1()
     await this.checkReports()
-    this.authListener()
-    console.log(window.web3)
+ 
   }
 
   async loadWeb3(){
@@ -53,7 +40,6 @@ export class App extends Component {
   
   async loadBlockchainData(){
     const web3 = window.web3
-
     //load account
     const accounts =await web3.eth.getAccounts()
     this.setState({account : accounts[0]}) 
@@ -72,7 +58,6 @@ export class App extends Component {
         })
     }
       this.setState({loading : false})
-      console.log(this.state.reports)
       }else{
       window.alert("contract is not deployed to network")
     }
@@ -99,7 +84,6 @@ export class App extends Component {
         })
     }
       this.setState({loading : false})
-      console.log(this.state.reports1)
       }else{
       window.alert("contract is not deployed to network")
     }
@@ -130,12 +114,9 @@ export class App extends Component {
     
       var b=check[0].toNumber()
       this.setState({b})
-      console.log({b})
-
     }
 
       this.setState({loading : false})
-      console.log(this.state.checks)
     
       }else{
       window.alert("contract is not deployed to network")
@@ -149,6 +130,7 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
       this.setState({loading:false})
     })
   }
+
   checkReport(key){
     this.setState({loading:true})
     this.state.antiDoping.methods.checkReport(key).send({from:this.state.account})
@@ -190,11 +172,7 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
     </Switch>
     
      <Navbar account={this.state.account} />
-      <Route exact={true} path='/Address' render={() => (
-            <div className="App">
-            <Address/>
-              </div>
-         )}/>   
+         
       
          <Route exact={true} path='/Main' render={() => (
             <div className="App">
@@ -234,17 +212,22 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
 
          )}/>
 
-          <Route exact={true} path='/' render={() => (
-            <div className="App">
-              <Log reports1 = {this.state.reports1}
-                    checks={this.state.checks}
-                    a={this.state.a}
-
+          <Route exact={true} path='/Address' render={() => (
+          <div className="App">
+              <Address reports = {this.state.reports}
+                 createReport={this.createReport}
                  />
             </div>
 
          )}/>
 
+           <Route exact={true} path='/' render={() => (
+            <div className="App">
+              <Log reports = {this.state.reports}
+                 createReport={this.createReport}
+                 />
+            </div>
+         )}/>
 </BrowserRouter>
 </div>
 );

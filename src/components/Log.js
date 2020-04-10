@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
-import {show} from './show';
 import styles from './styles.css';
-import { Button, Icon } from 'semantic-ui-react'
 var match1;
 class Log extends Component {
   constructor(props) {
@@ -14,7 +11,6 @@ class Log extends Component {
       c_email:"rohanardhapure012@gmail.com",
     	email:" ",
     	Address:" ",
-    	match1:" ",
     };
 
     this.submitData = this.submitData.bind(this);
@@ -36,13 +32,13 @@ class Log extends Component {
     matches ? alert(" Match") : alert("No Match");  
   	const {Address}=this.state;
   		if(matches)
-  		{if(Address=='0b19290dba70a58c886f72b7592e6105741385363d1587171753d3eb93843e35')
+  		{if(Address==='0b19290dba70a58c886f72b7592e6105741385363d1587171753d3eb93843e35')
   	    		window.location.href = "http://localhost:3000/Main	";
-  	   else if(Address=='0413de96484c15ccab5628d9a66be0c376a101ac474c58d675043e291dc78e5d')
+  	   else if(Address==='0413de96484c15ccab5628d9a66be0c376a101ac474c58d675043e291dc78e5d')
   	    		window.location.href = "http://localhost:3000/WADA	";
-  	   else if(Address=='78c118deb9c9299a99b02a674f5e28ad42fd53c54e10beff47f686776319d6c4')
+  	   else if(Address==='78c118deb9c9299a99b02a674f5e28ad42fd53c54e10beff47f686776319d6c4')
   	    		window.location.href = "http://localhost:3000/loadReport	";
-  	    else if(Address=='Player')
+  	    else if(Address==='Player')
   	    	window.location.href = "http://localhost:3000/Player	";
   }
   	}

@@ -1,32 +1,44 @@
 import React, { Component } from 'react';
-import fire from './fire'
-var input;
+import data from './data'
+
 class Address extends Component {
-
-
+getData()
+{   var flg=0;
+      data.map((player,index)=>{
+          flg=0;
+            const playerName =player.playerName
+            const playerAge=player.playerAge
+            const bloodGroup=player.bloodGroup
+            const drugName=player.drugName
+            const quantity=player.quantity
+        this.props.reports.map((report,key)=>{
+            const playerName1=report.playerName
+            if(playerName===playerName1)
+              flg=1
+          })
+            if(flg===0)
+               this.props.createReport(playerName, playerAge, bloodGroup, drugName, quantity)
+                 
+         } )
+      
+}
+constructor(props)
+{
+   super(props)
+   this.getData=this.getData.bind(this)
+}
   render() {
     return (
         <div id="content">
-
-              <h1>Provide Address</h1>
-        <form >
-          <div className="form-group mr-sm-2">
-            <input
-              id="Address"
-              type="text"
-              ref={(input) => { this.antiDopingPlayerName = input }}
-              className="form-control"
-              placeholder="Player Name"
-              required />
-          </div>
-          
-          <button type="submit" className="btn btn-primary" onClick={this.getValue} >Add Report</button>
+          <h1>Add Data</h1>   
+         
+           <button className="btn btn-primary" onClick={this.getData} >Add Report</button>
                
- </form>
 
-        </div>
 
-    );
+       </div>
+
+    )
   }
 }
 

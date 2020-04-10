@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import AntiDoping from '../abis/AntiDoping.json' 
-import {App} from './App'
-import {show} from './show'
 class Player extends Component {
  
   render() {

@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import AntiDoping from '../abis/AntiDoping.json' 
-import {App} from './App'
-
 export class Auth extends Component {
 getValue()
 {
