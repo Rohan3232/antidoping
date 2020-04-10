@@ -3,7 +3,11 @@ import Web3 from 'web3'
 import './App.css';
 import AntiDoping from '../abis/AntiDoping.json' 
 import data from './data.json'
-import Navbar from './Navbar'
+import Navbar1 from './Navbar_login'//login 
+import Navbar2 from './Navbar_WADA'//WADA
+import Navbar3 from './navbar_BCCI'//BCCI
+import Navbar from './Navbar_AddPlayer'//login
+
 import Main from './Main'
 import Show from './show'
 import {BrowserRouter, Route,Switch} from 'react-router-dom'
@@ -166,19 +170,18 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
     
            <div className="container-fluid mt-5">
       <BrowserRouter>
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/Log" component={Log} />
-    </Switch>
-    
-     <Navbar account={this.state.account} />
+   
          
       
          <Route exact={true} path='/Main' render={() => (
+
             <div className="App">
               <Main reports = {this.state.reports}
                  createReport={this.createReport}
                  />
+                          <Navbar account={this.state.account} />
+
+   
             </div>
          )}/>
          <Route exact={true} path='/WADA' render={() => (
@@ -188,7 +191,10 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
                   a={this.state.a}
                  checkReport={this.checkReport}
                  b={this.state.b}
+
                  />
+
+                          <Navbar2 account={this.state.account} />
             </div>
          )}/>
          <Route exact={true} path='/loadreport' render={() => (
@@ -198,6 +204,8 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
                     a={this.state.a}
 
                  />
+                 <Navbar3 account={this.state.account} />
+
             </div>
 
          )}/>
@@ -208,6 +216,8 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
                     a={this.state.a}
 
                  />
+                 
+                    <Navbar1 account={this.state.account} />
             </div>
 
          )}/>
