@@ -44,34 +44,39 @@ class Log extends Component {
   	}
   render() {
     return (
-      <div>
+      <div className="Login">
 
-        <form className={styles.loginForm} onSubmit={this.submitData}>
-          Email:
+        <form className="loginform" onSubmit={this.submitData}>
+          <div className="container">
+        <h1>Login</h1>
+         <label for="email"><b>Email :</b></label>
+         <br></br>
          <input
             type="email"
             name="Email"
             onChange={this.inputEmail}
           />
+
           <br></br>
-         password:
+        <label for="c_password"><b>Password :</b></label>
+         <br></br>
           <input
             type="password"
             name="c_password"
             onChange={this.inputPassword}
           />  
-        
-          <br></br>
-
-		Address:
-		 <input
+        <br></br>
+  <label for="hexadecimal"><b>Private Key :</b></label>
+         <br></br>
+         	 <input
             type="hexadecimal"
-            name="Address"
+            name="Private Key"
             onChange={this.inputAddress}
           />  
 
           <br></br>
-           <button    type="submit"> submit</button>
+           <button class="button"  type="submit"> submit</button>
+           </div>
         </form>
       </div>
     );

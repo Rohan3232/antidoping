@@ -70,16 +70,7 @@ contract AntiDoping{
 	
 	//incr productCOunt
 	reportCount++;
-
-		if(_quantity>12000000000000000000)
-	{
-		checks[reportCount].isSuccess='Invalid';
-			
-	}
-	else
-	{checks[reportCount].isSuccess='Valid';
-		
-	}			checks[reportCount].id=reportCount;	
+			checks[reportCount].id=reportCount;	
 	//create report
 	reports[reportCount] = Report(reportCount, _playerName, _playerAge, _bloodGroup, _drugName, _quantity, msg.sender, false,v);
 	
@@ -125,10 +116,10 @@ contract AntiDoping{
 	emit AccessReport(reportCount, _product.playerName, _product.playerAge, _product.bloodGroup, _product.drugName, _product.quantity, msg.sender, true);
 
 	}
-	function checkReport(uint id1) public returns(string memory isVal)
+	function checkReport(uint id1,string memory value) public returns(string memory isVal)
 	{
 		
-	   	 reports[id1].isValid=checks[id1].isSuccess;
+	   	 reports[id1].isValid=value;
 	    	isVal=reports[id1].isValid;
 	   	
 	   	

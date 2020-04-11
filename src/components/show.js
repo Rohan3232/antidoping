@@ -1,24 +1,67 @@
 import React, { Component } from 'react';
 
-
+import Tabletop from 'tabletop';
 var x;
-export class Show extends Component {
-  getValue()
-  { 
-
-    if(x==='valid')
-     { alert("data is valid")
-    }else
-        {alert("data is invalid")
-          
-    }
+class Address extends Component {
+componentDidMount() {
+    Tabletop.init({
+      key: '1NZ25YjnMAjJs7uCC5bIzRuf7DGnPvklBuMxHYGOHP68',
+      callback: googleData => {
+        this.setState({
+          data: googleData
+        })
+      },
+      simpleSheet: true
+    })
   }
 
+getData(value)
+{
+     
+     const { data } = this.state 
+     let output="Invalid";
+  var flg=0;      
+ this.props.reports.map((report,key)=>{
+                flg=0;
+           const dName=report.drugName
+          const dValue=window.web3.utils.fromWei(report.quantity.toString(),'Ether')
+          const id=report.id.toString();
+           
+if(value==id)
+{
+ data.map(drug => {
+            const drugName =drug.DrugName
+            const Threshold=drug.Threshold
+          if(dName==drugName &&dValue<Threshold )
+          {
+              flg=1;
+          }
+          
+
+
+          })
+}
+         if(flg==1)
+            output="valid"
+          })
+  this.checkReport(value,output)
+}
+ 
+ 
+constructor(props)
+{
+   super(props)
+   this.state={
+    data:[],
+   }
+   this.getData=this.getData.bind(this)
+this.checkReport=this.props.checkReport.bind(this)
+}
   render() {
     return (
-        <div id="content"> 
+          <div id="content"> 
 
-        <h2>drug report</h2>
+        <h2 class="header">drug report</h2>
         
         <table className="table">
 
@@ -44,8 +87,9 @@ export class Show extends Component {
                 <td>{report.bloodGroup}</td>
                 <td>{report.drugName}</td>
                 <td>{window.web3.utils.fromWei(report.quantity.toString(),'Ether')}</td>
+    
                 
-<td>        <button className="btn btn-primary" onClick={x=report.isValid,this.getValue,this.props.checkReport.bind(this,this.props.b)}>Verify</button></td>
+<td>        <button className="btn btn-primary" onClick={this.getData.bind(this,report.id.toString())}>Verify</button></td>
                 </tr>
 
                 )
@@ -54,11 +98,13 @@ export class Show extends Component {
           </tbody>
 
         </table>
-       
-          
+
+
         </div>
-    );
+
+        
+    )
   }
 }
 
-export default Show;
+export default Address;
