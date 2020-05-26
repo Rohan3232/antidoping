@@ -23,8 +23,11 @@ class Navbar2 extends Component {
           </a>
           <ul className = "navbar-nav px-3">
             <li className = "nav-item text-nowrap d-none d-sm-none d-sm-block">
-              <small className="text-white"><span id="account"><button  style = {{backgroundColor:'red'}} className="btn btn-primary"onClick={this.logout}>Logout</button> 
-      </span></small>
+              <small className="text-white">
+              <span id="account">
+              <button title="logout" style = {{backgroundColor:'red',alignItems:"left "}} className="btn btn-primary"onClick={this.logout}>Logout</button> 
+              </span>
+              </small>
             </li>
           </ul> 
       </nav>

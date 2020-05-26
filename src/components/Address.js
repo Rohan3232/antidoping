@@ -21,7 +21,7 @@ getData()
                 flg=0;
             const playerName =player.Name
             const playerAge=player.Age
-            const bloodGroup=String(player.BloodGroup)
+            const bloodGroup=player.Bgroup
             const drugName=player.DrugName
             const quantity=window.web3.utils.toWei(String(player.Quantity), 'Ether')
              this.props.reports.map((report,key)=>{

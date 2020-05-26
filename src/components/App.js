@@ -15,7 +15,6 @@ import WADA from './WADA'
 import Login from './Login'
 import Address from './Address'
 import Address2 from './Address2'
-import Auth from './Auth'
 import Log from './Log'
 import PLAYER from './PLAYER'
 export class App extends Component {
@@ -136,9 +135,9 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
     })
   }
 
-  checkReport(key){
+  checkReport(key,data){
     this.setState({loading:true})
-    this.state.antiDoping.methods.checkReport(key).send({from:this.state.account})
+    this.state.antiDoping.methods.checkReport(key,data).send({from:this.state.account})
     .once('receipt', (receipt)=>{
       this.setState({loading:false})
     })
@@ -227,7 +226,10 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
           <div className="App">
               <Address reports = {this.state.reports}
                  createReport={this.createReport}
-                 />
+                  a={this.state.a}
+                 checkReport={this.checkReport}
+                 b={this.state.b}
+/>
             </div>
 
          )}/>
