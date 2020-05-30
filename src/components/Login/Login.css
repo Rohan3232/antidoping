@@ -1,0 +1,9 @@
+body {
+  background-size: cover;  
+  background-color: #ffcc66;
+   background-image: url(olympic.jpg);
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}

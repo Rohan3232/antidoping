@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import Web3 from 'web3'
-import './App.css';
 import AntiDoping from '../abis/AntiDoping.json' 
-import data from './data.json'
-import Navbar1 from './Navbar_login'//login 
-import Navbar2 from './Navbar_WADA'//WADA
-import Navbar3 from './navbar_BCCI'//BCCI
-import Navbar from './Navbar_AddPlayer'//login
-
-import Main from './Main'
-import Show from './show'
+import data from './AddData/data.json'
+import Navbar_login from './Navbar_login'//login 
+import Navbar_other from './Navbar_other'//WADA
+import AddData from './AddData/AddData'
+import Manually from './AddData/Manually'
+import WADA from './WADA/WADA'
 import {BrowserRouter, Route,Switch} from 'react-router-dom'
-import WADA from './WADA'
-import Login from './Login'
-import Address from './Address'
-import Address2 from './Address2'
-import Log from './Log'
-import PLAYER from './PLAYER'
+import BCCI from './BCCI/BCCI'
+import Sheet from './AddData/Sheet'
+import Json from './AddData/Json'
+import Login from './Login/Login'
+import Player from './Player/Player'
 export class App extends Component {
 
      async componentWillMount(){
@@ -173,20 +169,43 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
    
          
       
-         <Route exact={true} path='/Main' render={() => (
+         <Route exact={true} path='/AddData' render={() => (
 
             <div className="App">
-              <Main reports = {this.state.reports}
+              <AddData reports = {this.state.reports}
                  createReport={this.createReport}
                  />
-                          <Navbar account={this.state.account} />
+                          <Navbar_other account={this.state.account} />
 
    
             </div>
          )}/>
+          <Route exact={true} path='/Manually' render={() => (
+
+            <div className="App">
+              <Manually reports = {this.state.reports}
+                 createReport={this.createReport}
+                 />
+                          <Navbar_other account={this.state.account} />
+
+   
+            </div>
+         )}/>
+         <Route exact={true} path='/Sheet' render={() => (
+
+            <div className="App">
+              <Sheet reports = {this.state.reports}
+                 createReport={this.createReport}
+                 />
+                          <Navbar_other account={this.state.account} />
+
+   
+            </div>
+         )}/>
+        
          <Route exact={true} path='/WADA' render={() => (
             <div className="App">
-              <Show reports = {this.state.reports}
+              <WADA reports = {this.state.reports}
                  createReport={this.createReport}
                   a={this.state.a}
                  checkReport={this.checkReport}
@@ -194,60 +213,53 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
 
                  />
 
-                          <Navbar2 account={this.state.account} />
+                          <Navbar_other account={this.state.account} />
             </div>
          )}/>
-         <Route exact={true} path='/loadreport' render={() => (
+         <Route exact={true} path='/BCCI' render={() => (
             <div className="App">
-              <WADA reports1 = {this.state.reports1}
+              <BCCI reports1 = {this.state.reports1}
                     checks={this.state.checks}
                     a={this.state.a}
 
                  />
-                 <Navbar3 account={this.state.account} />
+                 <Navbar_other account={this.state.account} />
 
             </div>
 
          )}/>
-          <Route exact={true} path='/PLAYER' render={() => (
+          <Route exact={true} path='/Player' render={() => (
             <div className="App">
-              <PLAYER reports1 = {this.state.reports1}
+              <Player reports1 = {this.state.reports1}
                     checks={this.state.checks}
                     a={this.state.a}
 
                  />
                  
-                    <Navbar1 account={this.state.account} />
-            </div>
-
-         )}/>
-
-          <Route exact={true} path='/Address' render={() => (
-          <div className="App">
-              <Address reports = {this.state.reports}
-                 createReport={this.createReport}
-                  a={this.state.a}
-                 checkReport={this.checkReport}
-                 b={this.state.b}
-/>
+                    <Navbar_other account={this.state.account} />
             </div>
 
          )}/>
 
            <Route exact={true} path='/' render={() => (
             <div className="App">
-              <Log reports = {this.state.reports}
+              <Login reports = {this.state.reports}
                  createReport={this.createReport}
                  />
+                  <Navbar_login account={this.state.account} />
+            
             </div>
          )}/>
-          <Route exact={true} path='/Address2' render={() => (
+          <Route exact={true} path='/Json' render={() => (
             <div className="App">
-              <Address2 reports = {this.state.reports}
+              <Json reports = {this.state.reports}
                  createReport={this.createReport}
                  />
+
+                  <Navbar_other account={this.state.account} />
             </div>
          )}/>
+
 </BrowserRouter>
 </div>
 );

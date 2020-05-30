@@ -1,0 +1,34 @@
+body {
+
+  background-size: cover;  
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
+}
+
+#reports {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 100%;
+background-color:#ccffff;
+  border-color: black;
+}
+#reports td, #reports th {
+  border: 1px solid #ddd;
+  padding: 8px;
+
+  border-color: black;
+}
+
+#reports tr:hover {background-color: #ddd;}
+
+#reports th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #0000ff;
+  color: white;
+}

@@ -1,0 +1,35 @@
+[ 
+    {
+        "id": 1,
+        "playerName": "rohan",
+        "playerAge": "21",
+        "bloodGroup": "AB+",
+        "drugName": "cocaine",
+        "quantity": "23"
+    },
+    
+    {
+        "id": 2,
+        "playerName": "Rohan Godge",
+        "playerAge": "22",
+        "bloodGroup": "A+",
+        "drugName": "terbutaline",
+        "quantity": "10"
+    },
+      {
+        "id": 3,
+        "playerName": "Ashish Divekar",
+        "playerAge": "21",
+        "bloodGroup": "O+",
+        "drugName": "morphine",
+        "quantity": "12"
+    },
+    {
+        "id": 4,
+        "playerName": "r",
+        "playerAge": "21",
+        "bloodGroup": "AB+",
+        "drugName": "cocaine",
+        "quantity": "23"
+    }
+]
