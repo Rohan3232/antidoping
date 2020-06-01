@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import Web3 from 'web3'
 import './App.css';
 import AntiDoping from '../abis/AntiDoping.json' 
-import data from './data.json'
-import Navbar1 from './Navbar_login'//login 
-import Navbar2 from './Navbar_WADA'//WADA
-import Navbar3 from './navbar_BCCI'//BCCI
-import Navbar from './Navbar_AddPlayer'//login
-
-import Main from './Main'
-import Show from './show'
-import {BrowserRouter, Route,Switch} from 'react-router-dom'
-import WADA from './WADA'
-import Login from './Login'
-import Address from './Address'
-import Address2 from './Address2'
-import Log from './Log'
-import PLAYER from './PLAYER'
+import NavbarAddFromGoogleSheet from './Navbar/Navbar_AddFromGoogleSheet'
+import Navbar from "./Navbar/Navbar"
+import AddManually from './AddData/addManually'
+import DataEntry from './AddData/dataEntry'
+import Show from './BCCI/ShowReport'
+import {BrowserRouter, Route} from 'react-router-dom'
+import WADA from './WADA/WADA'
+import AddFromGoogleSheet from './AddData/addFromGoogleSheet'
+import AddFromJSON from './AddData/addFromJSON'
+import Log from './LogIn/Log'
+import PLAYER from './Player/PLAYER'
 export class App extends Component {
 
      async componentWillMount(){
@@ -171,12 +167,24 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
            <div className="container-fluid mt-5">
       <BrowserRouter>
    
-         
+          <Route exact={true} path='/dataEntry' render={() => (
+            <div className="App">
+              <DataEntry reports1 = {this.state.reports1}
+                    checks={this.state.checks}
+                    a={this.state.a}
+
+                 />
+                 
+                    <NavbarAddFromGoogleSheet account={this.state.account} />
+            </div>
+
+         )}/>
+
       
-         <Route exact={true} path='/Main' render={() => (
+         <Route exact={true} path='/addManually' render={() => (
 
             <div className="App">
-              <Main reports = {this.state.reports}
+              <AddManually reports = {this.state.reports}
                  createReport={this.createReport}
                  />
                           <Navbar account={this.state.account} />
@@ -186,7 +194,7 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
          )}/>
          <Route exact={true} path='/WADA' render={() => (
             <div className="App">
-              <Show reports = {this.state.reports}
+              <WADA reports = {this.state.reports}
                  createReport={this.createReport}
                   a={this.state.a}
                  checkReport={this.checkReport}
@@ -194,17 +202,17 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
 
                  />
 
-                          <Navbar2 account={this.state.account} />
+                          <NavbarAddFromGoogleSheet account={this.state.account} />
             </div>
          )}/>
-         <Route exact={true} path='/loadreport' render={() => (
+         <Route exact={true} path='/ShowReport' render={() => (
             <div className="App">
-              <WADA reports1 = {this.state.reports1}
+              <Show reports1 = {this.state.reports1}
                     checks={this.state.checks}
                     a={this.state.a}
 
                  />
-                 <Navbar3 account={this.state.account} />
+                 <NavbarAddFromGoogleSheet account={this.state.account} />
 
             </div>
 
@@ -217,19 +225,20 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
 
                  />
                  
-                    <Navbar1 account={this.state.account} />
+                    <NavbarAddFromGoogleSheet account={this.state.account} />
             </div>
 
          )}/>
 
-          <Route exact={true} path='/Address' render={() => (
+          <Route exact={true} path='/AddFromGoogleSheet' render={() => (
           <div className="App">
-              <Address reports = {this.state.reports}
+                <AddFromGoogleSheet reports = {this.state.reports}
                  createReport={this.createReport}
                   a={this.state.a}
                  checkReport={this.checkReport}
                  b={this.state.b}
 />
+            <NavbarAddFromGoogleSheet account={this.state.account} />
             </div>
 
          )}/>
@@ -241,11 +250,12 @@ createReport(playerName, playerAge, bloodGroup, drugName, quantity){
                  />
             </div>
          )}/>
-          <Route exact={true} path='/Address2' render={() => (
+          <Route exact={true} path='/AddFromJSON' render={() => (
             <div className="App">
-              <Address2 reports = {this.state.reports}
+              <AddFromJSON reports = {this.state.reports}
                  createReport={this.createReport}
                  />
+            <NavbarAddFromGoogleSheet account={this.state.account} />
             </div>
          )}/>
 </BrowserRouter>
